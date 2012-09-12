@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE skole [
+<!ELEMENT skole (fag|lærer|beskrivelse)*>
+<!ELEMENT fag (navn,(lærer|lærerref)+)>	
+   <!ATTLIST fag fagid ID #REQUIRED>
+   <!ATTLIST fag stp CDATA #IMPLIED>
+<!ELEMENT lærer (navn,(underviser)*)>
+   <!ATTLIST lærer id ID #IMPLIED>
+<!ELEMENT lærerref EMPTY>
+   <!ATTLIST lærerref kode IDREF #REQUIRED>
+<!ELEMENT underviser EMPTY>
+   <!ATTLIST underviser fagid IDREF #REQUIRED>
+<!ELEMENT navn (#PCDATA)>
+<!ELEMENT beskrivelse (#PCDATA)>
+   <!ATTLIST beskrivelse fagid IDREF #REQUIRED>
+]>
+<skole>
+<fag fagid="pg450" stp="10">
+   <navn>PG450 Innføring i XML</navn>
+   <lærer id="anf">
+      <navn>Anders Fongen</navn>
+   </lærer>
+</fag>
+
+<fag fagid="tk100" stp="5">
+   <navn>TK100 Datateknikk</navn>
+   <lærerref kode="anf"/>
+</fag>
+
+<lærer id="tmg">
+   <navn>Tor Morten Grønli</navn>
+   <underviser fagid="tk100"/>
+</lærer>
+
+<beskrivelse fagid="tk100">
+Faget skal gi en elementær innføring i datamaskinarkitektur og 
+nettverksteknologi. Her blir det forklart begreper som minne,
+prosessor, inn/ut-enheter, adresser og avbrudd
+</beskrivelse>
+
+<beskrivelse fagid="pg450">
+Faget gir en grundig innføring i XML-teknologi og ferdigheter
+i programmering for å behandle XML-dokumenter. En del teoretiske
+emner rundt formell syntaks og regelbasert programmering er
+også tatt med i kurset
+</beskrivelse>
+
+</skole>
